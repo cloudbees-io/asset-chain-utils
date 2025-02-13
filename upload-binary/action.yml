@@ -1,0 +1,37 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: action
+name: build-scan-repository
+description: "Build and scan repository"
+
+inputs:
+  debug:
+    description: "Verbose output"
+    required: false
+    default: "false"
+  file-path:
+    description: "File path to upload"
+    required: true
+  file-type:
+    description: "File type to upload. If not provided, the file type will default to 'file'"
+    required: false
+  file-name:
+    description: "File name to upload. If not provided, the file name will be the same as the file path"
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - name: Upload artifact using action
+      uses: docker://public.ecr.aws/l7o7z1g8/actions/assets-plugin-chain-utils:0b07952a5146395387b1fa898f4f632926e53e3a
+      with:
+        entrypoint: assets-plugin-chain-utils
+        args: upload-binary
+      env:
+        INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
+        INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
+        INPUT_FILE_PATH: ${{ inputs.file-path }}
+        INPUT_STEP_ID: ${{ step.id }}
+        INPUT_NOTIFY_ASSET_SERVICE: "true"
+        INPUT_DEBUG: ${{ inputs.debug }}
+        INPUT_FILE_TYPE: ${{ inputs.file-type }}
+        INPUT_FILE_NAME: ${{ inputs.file-name }}

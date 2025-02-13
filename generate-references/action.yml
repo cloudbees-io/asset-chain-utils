@@ -1,0 +1,16 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: action
+name: gitleaks-hybrid
+
+runs:
+  using: composite
+  steps:
+    - name: Generate reference files 
+      uses: docker://public.ecr.aws/l7o7z1g8/actions/assets-plugin-chain-utils:0b07952a5146395387b1fa898f4f632926e53e3a
+      with:
+          entrypoint: assets-plugin-chain-utils
+          args: generate-references --asset-type ${{ inputs.asset_type }}
+      env:
+          INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
+          INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
+          INPUT_RUN_ID: ${{ cloudbees.run_id }}
