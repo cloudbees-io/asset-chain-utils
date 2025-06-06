@@ -32,9 +32,12 @@ outputs:
   gitleaks:
     value: ${{ steps.plan.outputs.gitleaks}}
     description: "Gitleaks"
-  # sonar:
-  #   value: ${{ steps.plan.outputs.sonar}}
-  #   description: "SonarQube"
+  sonar-props:
+    value: ${{ steps.plan.outputs.sonar-props}}
+    description: "SonarQube"
+  sonar:
+    value: ${{ steps.plan.outputs.sonar}}
+    description: "SonarQube Scanner"
   checkov:
     value: ${{ steps.plan.outputs.checkov}}
     description: "Checkov"
@@ -69,7 +72,7 @@ runs:
   using: composite
   steps:
     - name: Initiate execution plan
-      uses: docker://public.ecr.aws/l7o7z1g8/actions/assets-plugin-chain-utils:0dea78066b1aecbca8a3a6674aade8ee49b5d57a
+      uses: docker://public.ecr.aws/l7o7z1g8/actions/assets-plugin-chain-utils:69d6741ad8ea6000a068d8b9e2c36e91f6fd271e
       id: plan
       with:
         entrypoint: assets-plugin-chain-utils
@@ -78,4 +81,4 @@ runs:
         INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
         INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
         INPUT_RUN_ID: ${{ cloudbees.run_id }}
-        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gosec,njsscan,gitleaks,checkov,wfartifact-inventory,wfartifact-decorator,trivy,findsecbugs,syft,grype'
+        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gosec,njsscan,gitleaks,checkov,wfartifact-inventory,wfartifact-decorator,trivy,findsecbugs,syft,grype,sonar,sonar-props'
