@@ -112,3 +112,4 @@ runs:
         INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
         INPUT_RUN_ID: ${{ cloudbees.run_id }}
         INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gerrit-inventory,gerrit-decorator,gosec,njsscan,gitleaks,checkov,wfartifact-inventory,wfartifact-decorator,trivy,findsecbugs,syft,grype,sonar,sonar-props,blackduck,blackduck-props,coverity,coverity-props,ecr_role_arn,ecr_region_name,ecr-inventory,ecr-metadata'
+        TIMEOUT: 180 # 3 minutes
