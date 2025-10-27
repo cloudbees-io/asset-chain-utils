@@ -102,7 +102,7 @@ runs:
   using: composite
   steps:
     - name: Initiate execution plan
-      uses: docker://public.ecr.aws/l7o7z1g8/actions/assets-plugin-chain-utils:69d6741ad8ea6000a068d8b9e2c36e91f6fd271e
+      uses: docker://public.ecr.aws/l7o7z1g8/actions/assets-plugin-chain-utils:6b1b1b9d1061144bc5e87a498b5a9bf53e69ab9b
       id: plan
       with:
         entrypoint: assets-plugin-chain-utils
@@ -112,4 +112,4 @@ runs:
         INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
         INPUT_RUN_ID: ${{ cloudbees.run_id }}
         INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gerrit-inventory,gerrit-decorator,gosec,njsscan,gitleaks,checkov,wfartifact-inventory,wfartifact-decorator,trivy,findsecbugs,syft,grype,sonar,sonar-props,blackduck,blackduck-props,coverity,coverity-props,ecr_role_arn,ecr_region_name,ecr-inventory,ecr-metadata'
-        INPUT_TIMEOUT: "180" # 3 minutes
+        INPUT_TIMEOUT: "120" # 2 minutes
