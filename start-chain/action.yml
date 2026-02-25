@@ -121,9 +121,6 @@ outputs:
   jfrog-metadata:
     value: ${{ steps.plan.outputs.jfrog-metadata}}
     description: "JFrog Artifactory Metadata"
-  jfrog_token:
-    value: ${{ steps.plan.outputs.jfrog_token}}
-    description: "JFrog Artifactory Token"
   trivy:
     value: ${{ steps.plan.outputs.trivy}}
     description: "Trivy"
@@ -141,7 +138,7 @@ runs:
   using: composite
   steps:
     - name: Initiate execution plan
-      uses: docker://public.ecr.aws/l7o7z1g8/actions/assets-plugin-chain-utils:6b1b1b9d1061144bc5e87a498b5a9bf53e69ab9b
+      uses: docker://public.ecr.aws/l7o7z1g8/actions/assets-plugin-chain-utils:805ec930ea41c76375697b921a6a75601afaed3a
       id: plan
       with:
         entrypoint: assets-plugin-chain-utils
@@ -150,5 +147,5 @@ runs:
         INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
         INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
         INPUT_RUN_ID: ${{ cloudbees.run_id }}
-        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gerrit-inventory,gerrit-decorator,gosec,njsscan,gitleaks,checkov,wfartifact-inventory,wfartifact-decorator,trivy,findsecbugs,syft,grype,sonar,sonar-props,blackduck,blackduck-props,coverity,coverity-props,perforce-klocwork-sast,perforce-klocwork-sast-props,snykcode,snykcode-props,snyk-iac,snyk-iac-props,snyksca,snyksca-props,ecr_role_arn,ecr_region_name,ecr-inventory,ecr-metadata,gitlab-inventory,gitlab-decorator,jfrog-inventory,jfrog-metadata,jfrog_token'
+        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gerrit-inventory,gerrit-decorator,gosec,njsscan,gitleaks,checkov,wfartifact-inventory,wfartifact-decorator,trivy,findsecbugs,syft,grype,sonar,sonar-props,blackduck,blackduck-props,coverity,coverity-props,perforce-klocwork-sast,perforce-klocwork-sast-props,snykcode,snykcode-props,snyk-iac,snyk-iac-props,snyksca,snyksca-props,ecr_role_arn,ecr_region_name,ecr-inventory,ecr-metadata,gitlab-inventory,gitlab-decorator,jfrog-inventory,jfrog-metadata'
         INPUT_TIMEOUT: "120" # 2 minutes
