@@ -7,7 +7,7 @@ runs:
   using: composite
   steps:
     - name: Complete execution plan
-      uses: docker://public.ecr.aws/l7o7z1g8/actions/assets-plugin-chain-utils:ac3061124d8d32e515c8a03cb2af84d25bff1133
+      uses: docker://public.ecr.aws/l7o7z1g8/actions/assets-plugin-chain-utils:805ec930ea41c76375697b921a6a75601afaed3a
       id: process-outputs
       with:
         entrypoint: assets-plugin-chain-utils
