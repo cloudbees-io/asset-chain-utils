@@ -150,7 +150,7 @@ runs:
   using: composite
   steps:
     - name: Initiate execution plan
-      uses: docker://public.ecr.aws/l7o7z1g8/actions/assets-plugin-chain-utils:805ec930ea41c76375697b921a6a75601afaed3a
+      uses: docker://public.ecr.aws/l7o7z1g8/actions/assets-plugin-chain-utils:d621d66df83be71f6b4b1d1ac7ac9e0de6f6fc7d
       id: plan
       with:
         entrypoint: assets-plugin-chain-utils
