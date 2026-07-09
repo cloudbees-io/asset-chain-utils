@@ -146,6 +146,18 @@ outputs:
     value: ${{ steps.plan.outputs.grype}}
     description: "Grype"
 
+  EDGE_REDACTION_STRIP_BASEDATA:
+    value: ${{ steps.plan.outputs.EDGE_REDACTION_STRIP_BASEDATA }}
+    description: "Strip BaseData (raw source) from code-scanner findings on edge"
+
+  EDGE_REDACTION_SWEEP_SARIF:
+    value: ${{ steps.plan.outputs.EDGE_REDACTION_SWEEP_SARIF }}
+    description: "Strip source snippets from .sarif files in the workspace on edge"
+
+  EDGE_REDACTION_SUPPRESS_CODE_SCANNER_LOGS:
+    value: ${{ steps.plan.outputs.EDGE_REDACTION_SUPPRESS_CODE_SCANNER_LOGS }}
+    description: "Suppress code-scanner stdout/stderr logs on edge"
+
 runs:
   using: composite
   steps:
@@ -159,5 +171,5 @@ runs:
         INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
         INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
         INPUT_RUN_ID: ${{ cloudbees.run_id }}
-        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gerrit-inventory,gerrit-decorator,gosec,njsscan,gitleaks,checkov,wfartifact-inventory,wfartifact-decorator,trivy,findsecbugs,syft,grype,sonar,sonar-props,blackduck,blackduck-props,coverity,coverity-props,perforce-klocwork-sast,perforce-klocwork-sast-props,snykcode,snykcode-props,snyk-iac,snyk-iac-props,snyksca,snyksca-props,checkmarxone-sast,checkmarxone-sast-props,ecr_role_arn,ecr_region_name,ecr-inventory,ecr-metadata,gitlab-inventory,gitlab-decorator,jfrog-inventory,jfrog-metadata,nexus-inventory,nexus-metadata'
+        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gerrit-inventory,gerrit-decorator,gosec,njsscan,gitleaks,checkov,wfartifact-inventory,wfartifact-decorator,trivy,findsecbugs,syft,grype,sonar,sonar-props,blackduck,blackduck-props,coverity,coverity-props,perforce-klocwork-sast,perforce-klocwork-sast-props,snykcode,snykcode-props,snyk-iac,snyk-iac-props,snyksca,snyksca-props,checkmarxone-sast,checkmarxone-sast-props,ecr_role_arn,ecr_region_name,ecr-inventory,ecr-metadata,gitlab-inventory,gitlab-decorator,jfrog-inventory,jfrog-metadata,nexus-inventory,nexus-metadata,EDGE_REDACTION_STRIP_BASEDATA,EDGE_REDACTION_SWEEP_SARIF,EDGE_REDACTION_SUPPRESS_CODE_SCANNER_LOGS'
         INPUT_TIMEOUT: "120" # 2 minutes

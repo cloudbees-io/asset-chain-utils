@@ -5,7 +5,7 @@ name: gitleaks-hybrid
 runs:
   using: composite
   steps:
-    - name: Generate reference files 
+    - name: Generate reference files
       uses: docker://public.ecr.aws/l7o7z1g8/actions/assets-plugin-chain-utils:d621d66df83be71f6b4b1d1ac7ac9e0de6f6fc7d
       with:
           entrypoint: assets-plugin-chain-utils
