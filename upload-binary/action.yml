@@ -25,7 +25,7 @@ runs:
   using: composite
   steps:
     - name: Upload artifact using action
-      uses: docker://public.ecr.aws/l7o7z1g8/actions/assets-plugin-chain-utils:5ff57896625d8f7be04d2366dae0e5d0f0c050d8
+      uses: docker://public.ecr.aws/l7o7z1g8/actions/assets-plugin-chain-utils:5f052b5189b93e3965dc27a6f4f23671d7d5b962
       with:
         entrypoint: assets-plugin-chain-utils
         args: upload-binary
